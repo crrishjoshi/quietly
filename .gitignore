@@ -3,6 +3,6 @@
 .DS_Store
 dist/
 release/
-\.codex/
+.codex/
 ._*
 *.xcuserstate
