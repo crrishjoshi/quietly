@@ -1,0 +1,7 @@
+.build/
+.build-architectures/
+.DS_Store
+dist/
+release/
+._*
+*.xcuserstate

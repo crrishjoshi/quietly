@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quietly Safari Audio Test</title>
+  <style>
+    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #202538; }
+    main { text-align: center; color: white; }
+    button { border: 0; border-radius: 18px; padding: 20px 34px; color: white; background: #6258df; font: 600 22px system-ui; }
+    p { opacity: .72; }
+  </style>
+</head>
+<body>
+  <main>
+    <button id="start" onclick="startTone()">Start 997 Hz test tone</button>
+    <p id="status">Stopped</p>
+  </main>
+  <script>
+    let context;
+    let oscillator;
+    let gain;
+
+    async function startTone() {
+      if (!context) {
+        context = new AudioContext({ sampleRate: 48000 });
+        oscillator = new OscillatorNode(context, { frequency: 997, type: "sine" });
+        gain = new GainNode(context, { gain: 0.16 });
+        oscillator.connect(gain).connect(context.destination);
+        oscillator.start();
+      }
+      await context.resume();
+      document.querySelector("#status").textContent = `Running · ${context.state}`;
+      return context.state;
+    }
+
+    async function stopTone() {
+      if (context) await context.suspend();
+      document.querySelector("#status").textContent = "Stopped";
+      return context?.state ?? "closed";
+    }
+  </script>
+</body>
+</html>
