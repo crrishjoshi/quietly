@@ -27,6 +27,15 @@ test report from that development process.
 Quietly is intentionally narrow: it does not provide per-app volume sliders,
 audio recording, effects, or a virtual audio driver.
 
+## Disclaimer
+
+Quietly is a personal, need-driven project created for my own use case rather
+than a supported public product. Much of the code and documentation was
+developed with AI assistance and may require review, correction, or adaptation
+for another Mac. Use it at your own risk, review the source before running it,
+and do not rely on it for critical audio, privacy, accessibility, or system
+behaviour. No warranty or support is provided.
+
 ## Compatibility
 
 | Mac | Result |
